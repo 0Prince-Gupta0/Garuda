@@ -1,0 +1,11 @@
+cd frontent
+npm run dev
+
+cd backend
+npm run start-dev
+
+prince@gmail.com DOCTOR
+123456
+
+haris@gmail.com PATIENT
+123456
