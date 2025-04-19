@@ -34,7 +34,6 @@ mongoose.set('strictQuery', false);
 
 const connectDB = async () => {
   try {
-    console.log("Connecting to:", process.env.MONGO_URL); // 👀 Debug log
     await mongoose.connect(process.env.MONGO_URL);
     console.log('✅ MongoDB connected');
   } catch (error) {
@@ -140,22 +139,10 @@ io.on('connection', (socket) => {
 });
 
 
-const __dirname1=path.resolve();
-if(process.env.NODE_ENV==='prod')
-{
-  app.use(express.static(path.join('/frontend/dist')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve("frontend","dist","index.html"));
-  })
-}
- 
-else{
+
   app.get('/', (req, res) => {
     res.send('API is working');
   });
-
-}
-
 
 
 const port = process.env.PORT || 5000;
