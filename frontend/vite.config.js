@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [
@@ -14,5 +14,8 @@ export default defineConfig({
         }
       ]
     })
-  ]
-})
+  ],
+  define: {
+    global: 'window', // 👈 this fixes the error
+  },
+});
