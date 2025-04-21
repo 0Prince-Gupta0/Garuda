@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 import { BASE_URL, token } from "../../config"
 import convertTime from "../../utils/convertTime"
 import {toast} from 'react-toastify';
 
 const SidePanel = ({doctorId, ticketPrice, timeSlots}) => {
-  
+  const navigate=useNavigate();
   const bookingHandler= async ()=>{
     try{
       const res = await fetch(`${BASE_URL}/booking/checkout-session/${doctorId}`, {
@@ -22,6 +23,11 @@ const SidePanel = ({doctorId, ticketPrice, timeSlots}) => {
       if(data.session.url)
       {
         window.location.href = data.session.url
+      }
+
+      if(res.ok)
+      {
+        navigate('/checkout-success');
       }
     }
     catch(err)
