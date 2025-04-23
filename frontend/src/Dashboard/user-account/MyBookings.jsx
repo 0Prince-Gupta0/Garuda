@@ -7,13 +7,15 @@ import { formatDate } from '../../utils/formatDate';
 import { BsChatDots } from "react-icons/bs";
 import ChatModal from '../../components/ChatModal';
 
-const MyBookings = ({ user }) => {
+const MyBookings = ({ userData }) => {
   const { data: appointments, loading, error } = useFetchData(`${BASE_URL}/user/appointments/my-appointments`);
   const [selectedChat, setSelectedChat] = useState(null);
-  // console.log(user);
+  console.log(userData);
   const openChat = async (user) => {
     const userId=user._id;
     const reUserModel=user.role;
+
+      console.log(user);
     try {
       const res = await fetch(`${BASE_URL}/chat`, {
         method: "POST",
@@ -82,7 +84,7 @@ const MyBookings = ({ user }) => {
                 <td className="px-6 py-4">{item.ticketPrice || 'N/A'}</td>
                 <td className="px-6 py-4">{formatDate(item.createdAt)}</td>
                 <td className="px-6 py-4">
-                <button onClick={() => openChat(item.user)}>
+                <button onClick={() => openChat(item.doctor)}>
     <BsChatDots size={24} />
   </button>
                 </td>
@@ -102,7 +104,7 @@ const MyBookings = ({ user }) => {
       {selectedChat && (
        <ChatModal
          chat={selectedChat}
-         currentUser={user}
+         currentUser={userData}
          onClose={() => setSelectedChat(null)}
        />
      )}

@@ -88,7 +88,7 @@ export const MyAccount = () => {
                   Profile Setting
                 </button>
               </div>
-              {tab === "bookings" && <MyBookings user={userData}/>}
+              {tab === "bookings" && <MyBookings userData={userData}/>}
               {tab === "settings" && <Profile user={userData} />}
             </div>
           </div>

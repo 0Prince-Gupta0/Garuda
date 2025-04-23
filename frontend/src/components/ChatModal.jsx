@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const ChatModal = ({ chat, currentUser, onClose }) => {
 const navigate=useNavigate();
-  // console.log(currentUser);
+  console.log(currentUser);
   console.log(chat);
 
   const [messages, setMessages] = useState([]);
@@ -13,14 +13,9 @@ const navigate=useNavigate();
   const messagesEndRef = useRef(null);
 
   const chatId = chat?.chat?._id || chat?._id;
-
   const chatPartner = (chat.chat.participants)?.find(
     (u) => String(u.user._id) !== String(currentUser._id)
   );
-
-  // console.log(currentUser._id);
-  // console.log(chatPartner);
-
   useEffect(() => {
     if (!chatId || !currentUser?._id) return;
 

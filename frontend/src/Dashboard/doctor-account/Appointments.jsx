@@ -14,6 +14,12 @@ const Appointments = ({ data}) => {
    const openChat = async (user) => {
     const userId=user._id;
     const reUserModel=user.role;
+    // console.log("reUserId:");
+    // console.log(userId);
+    // console.log("reUserModel:");
+    // console.log(reUserModel);
+
+
     try {
       const res = await fetch(`${BASE_URL}/chat`, {
         method: "POST",
